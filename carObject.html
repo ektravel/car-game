@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Object</title>
+  </head>
+  <body>
+      <div>
+          <h1>Car Game</h1> 
+          <h2>To play, press "d" to drive to work, "w" to drive around the world, "t" to get tune up, and "h" to honk. </h2>
+          <p id="user-input"></p>
+      </div>
+
+    <script>
+
+      var car = {
+        make: "Honda",
+        model: "Fit",
+        color: "Blue Raspberry",
+        mileage: 3000,
+        isWorking: true,
+
+        driveToWork: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 8;
+
+          alert("New mileage: " + this.mileage);
+        },
+
+        driveAroundWorld: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 24000;
+
+          alert("New Mileage: " + this.mileage);
+          alert("Car needs a tuneup!");
+
+          this.isWorking = false;
+        },
+
+        getTuneUp: function() {
+          alert("Car is ready to go!");
+          this.isWorking = true;
+        },
+
+        honk: function() {
+          alert("Honk! Honk!");
+        }
+      };
+
+      function reWriteStats(){
+        console.log("Make: " + car.make);
+        console.log("Model: " + car.model);
+        console.log("Color:" + car.color);
+        console.log("Mileage: " + car.mileage);
+        console.log("Is Working: " + car.isWorking);
+        console.log("------------------------------");
+      }
+
+      //an array to hold all of the input options
+      var carFeatures = ["d", "w", "t", "h"];
+
+      //when user presses a key, it calls the appropriate function
+      document.onkeyup = function(event){
+
+        var userEntry = event.key.toLowerCase();
+
+        //alert the user of the choice
+        document.getElementById("user-input").innerHTML = 
+        "<p> You clicked: " + userEntry + "</p>";
+
+        //function to call the appropriate object method
+        function displayCarFeature(){
+            if (userEntry === "d"){
+                car.driveToWork();
+            }else if (userEntry === "w"){
+                car.driveAroundWorld();
+            }else if (userEntry === "t"){
+                car.getTuneUp();
+            }else if (userEntry === "h"){
+                car.honk();
+            }
+        };
+
+        if (userEntry === "d" || userEntry === "w" || userEntry === "t" || userEntry === "h"){
+            displayCarFeature();
+            reWriteStats();
+        }else{
+            alert("This feature is not available.")
+        }
+                
+      };
+
+    </script>
+    
+  </body>
+</html>
+
