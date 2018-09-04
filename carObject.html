@@ -11,7 +11,7 @@
           <p id="user-input"></p>
       </div>
 
-    <script>
+    <script type="text/javascript">
 
       var car = {
         make: "Honda",
@@ -66,7 +66,7 @@
       //when user presses a key, it calls the appropriate function
       document.onkeyup = function(event){
 
-        var userEntry = event.key.toLowerCase();
+        var userEntry = event.key;
 
         //alert the user of the choice
         document.getElementById("user-input").innerHTML = 
